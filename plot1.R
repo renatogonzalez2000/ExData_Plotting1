@@ -16,21 +16,7 @@ class(data$Date)
 # Subset the data for the two dates of interest
 d <- data[data$Date=="2007-02-01" | data$Date=="2007-02-02"]
 
-# Convert data subset to a data frame
-class(d)
-d <- data.frame(d)
-
-# Convert columns to numeric
-for(i in c(3:9)) {d[,i] <- as.numeric(as.character(d[,i]))}
-
-# Create Date_Time variable
-d$Date_Time <- paste(d$Date, d$Time)
-
-# Convert Date_Time variable to proper format
-d$Date_Time <- strptime(d$Date_Time, format="%Y-%m-%d %H:%M:%S")
-class(d$Date_Time)
-
-# using lattice ploting system
+ # using lattice ploting system
 
 png(filename = "plot1.png", width = 480, height = 480)
  hist(d$Global_active_power, main = "Global Active Power", ylab = "Frequency", 
